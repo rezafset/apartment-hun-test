@@ -27,7 +27,7 @@ const Navigation = () => {
                             <a class="nav-link text-dark" href="#service">Service</a>
                         </li>
                         <li class="nav-item ml-2">
-                            <a class="nav-link text-dark" href="#">Dashboard</a>
+                            <Link to="/dashboard/booking" class="nav-link text-dark" href="#">Dashboard</Link>
                         </li>
                         <li class="nav-item ml-2">
                             <button class="btn btn-all">Login</button>
