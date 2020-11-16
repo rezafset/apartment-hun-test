@@ -1,0 +1,20 @@
+.ApartmentDetailsContainer p{
+    color: #747474;
+}
+.aptDetails {
+    margin-top: 30px;
+}
+.aptNameNPrice {
+    display: flex;
+    justify-content: space-between;
+}
+.aptName {
+    width: 70%;
+}
+.aptPrice {
+    width: 30%;
+}
+.priceDetail {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
