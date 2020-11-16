@@ -1,0 +1,12 @@
+.list-group .list-group-item{
+    background: none;
+    padding-left: 0;
+    border: none;
+    color: #fff;
+    text-decoration: none;
+    padding-bottom: 0;
+}
+.icon a i{
+    font-size: 25px;
+    color: #fff; 
+}
