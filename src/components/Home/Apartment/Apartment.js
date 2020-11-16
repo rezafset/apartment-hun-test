@@ -1,36 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarker, faBed, faBath } from '@fortawesome/free-solid-svg-icons';
 import './Apartment.css';
-import apartment1 from '../../../resources/images/apartment1.png'
+// import apartment1 from '../../../resources/images/apartment1.png'
 import SingleApt from './SingleApt/SingleApt';
 
-const fakeData = [
-    {
-        aptName: 'Washington Avenue',
-        aptLocation: 'Nasirabad H/S, Chattogram',
-        aptBedrooms: 3,
-        aptBathroom: 3,
-        aptPrice: 194,
-        aptThumb: 1,
-    },
-    {
-        aptName: 'Gulshan Avenue',
-        aptLocation: 'Fokirapool H/S, Chattogram',
-        aptBedrooms: 4,
-        aptBathroom: 2,
-        aptPrice: 200,
-        aptThumb: 2,
-    },
-]
-
-
 const Apartment = () => {
+    const [apartment, setApartment] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:7000/house')
+            .then(response => response.json())
+            .then(data => setApartment(data))
+
+    }, [])
+
     return (
         <div id="apartment">
             <div className="container py-5">
                 <div className="row">
-                    {fakeData.map( (aptInfo, i) => <div className="col-md-4"><SingleApt key={i} aptInfo={aptInfo}></SingleApt></div> )}
+                    {
+                        apartment.map((apartment, i) => <div className="col-md-4"><SingleApt key={i} apartment={apartment}></SingleApt></div>)
+                    }
                 </div>
             </div>
         </div>
