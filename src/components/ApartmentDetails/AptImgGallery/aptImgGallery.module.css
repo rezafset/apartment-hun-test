@@ -1,0 +1,13 @@
+.imgGalleryContainer {
+    height: 510px;
+}
+.imgGalleryContainer img {
+    max-width: 100%;
+}
+.imgPreview {
+    height: 375px;
+    margin-bottom: 25px;
+}
+.imgThumbnails {
+    height: 110px;
+}

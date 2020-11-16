@@ -1,0 +1,67 @@
+.authenticationContainer {
+    text-align: center;
+    width: 450px;
+    margin: 100px auto;
+}
+.formContainer {
+    border: 1px solid gray;
+    text-align: left;
+    padding: 40px;
+}
+.formContainer input {
+    border: none;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 25px;
+    width: 100%;
+}
+.authenticationBtn {
+    background: #275A53;
+    width: 100%;
+    border: 0;
+    padding: 7px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+.newUserIdentifier {
+    margin-bottom: 20px;
+    text-align: center;
+}
+.newUserIdentifier span {
+    color: #275A53;
+    
+}
+.newUserIdentifier span:hover {
+    cursor: pointer;
+
+}
+.alternateAuthenticationDivider {
+    position: relative;
+    margin: 30px 0;
+    display: inline-block;
+}
+.alternateAuthenticationDivider::after {
+    content: "";
+    background: gray;
+    width: 150px;
+    height: 2px;
+    position: absolute;
+    left: -165px;
+    top: 10px;
+}
+.alternateAuthenticationDivider::before {
+    content: "";
+    background: gray;
+    width: 150px;
+    height: 2px;
+    position: absolute;
+    right: -165px;
+    top: 10px;
+}
+.alternateAuth button {
+    display: block;
+    border: none;
+    border-radius: 20px;
+    width: 85%;
+    margin: 20px auto;
+    padding: 5px 5px;
+}
