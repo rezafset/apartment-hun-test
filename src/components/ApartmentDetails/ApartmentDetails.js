@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Banner from '../Home/Banner/Banner';
 import Navigation from '../Shared/Navigation/Navigation';
 import AptImgGallery from './AptImgGallery/AptImgGallery';
 import RentRequestForm from './RentRequestForm/RentRequestForm';
 import classes from './apartmentDetails.module.css';
+import { useParams } from 'react-router-dom';
 
 
 const ApartmentDetails = (props) => {
+
+    const [aptInfo, setAptInfo] = useState({});
+    const aptId = useParams();
+    console.log('Apartment ID from route parameter:', aptId.id)
+    useEffect( () => {
+        fetch(`http://localhost:7000/apartmentDetails/${aptId.id}`)
+        .then( res => res.json())
+        .then( data => {
+            const selectedApt = {...data}
+            setAptInfo(selectedApt);
+            console.log(selectedApt);
+            console.log(aptInfo);
+        })
+    }, [])
     return (
         <div>
             <Navigation></Navigation>
@@ -21,14 +36,14 @@ const ApartmentDetails = (props) => {
                                 <div className="apartmentHead">
                                     <div className={classes.aptNameNPrice}>
                                         <div className={classes.aptName}>
-                                            <h3>Family Apartment Three</h3>
+                                        <h3>{aptInfo.title}</h3>
                                         </div>
                                         <div className={classes.aptPrice} style={{"color": "#275A53", "textAlign":"right"}}>
-                                            <h3>$256</h3>
+                                            <h3>${aptInfo.price}</h3>
                                         </div>
                                     </div>
                                     <div className="aptIntro">
-                                    <p>3000 sq-ft., 3 Bedroom, Semi-furnished, Luxurious, South facing Apartment for Rent in Rangs Malancha, Melbourne.</p>
+                                    <p>3000 sq-ft., {aptInfo.bedroom} Bedroom, Semi-furnished, Luxurious, South facing Apartment for Rent in Rangs Malancha, Melbourne.</p>
                                     </div>
                                 </div>
                                 <div className={classes.priceDetail}>
@@ -45,7 +60,7 @@ const ApartmentDetails = (props) => {
                             </div>
                         </Col>
                         <Col md={4}>
-                            <RentRequestForm></RentRequestForm>
+                            <RentRequestForm aptInfo={aptInfo}></RentRequestForm>
                         </Col>
                     </Row>
                 </div>
