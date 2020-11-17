@@ -29,7 +29,7 @@ const RentRequestForm = (props) => {
     }
 
     const handleBookingRequest = (e) => {
-        fetch('http://localhost:7000/requestBooking', {
+        fetch('https://agile-taiga-86357.herokuapp.com/requestBooking', {
             method: 'POST',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify(bookingInfo)

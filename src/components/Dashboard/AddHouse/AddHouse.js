@@ -34,7 +34,7 @@ const AddHouse = () => {
         formData.append('bedroom', info.bedroom);
         formData.append('bathroom', info.bathroom);
 
-        fetch('http://localhost:7000/addHouse', {
+        fetch('https://agile-taiga-86357.herokuapp.com/addHouse', {
             method: 'POST',
             body: formData
         })

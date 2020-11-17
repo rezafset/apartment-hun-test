@@ -12,7 +12,7 @@ const AddAdmin = () => {
     const { register, handleSubmit, errors } = useForm();
 
     const onSubmit = data => {
-        fetch('http://localhost:7000/addAdmin', {
+        fetch('https://agile-taiga-86357.herokuapp.com/addAdmin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

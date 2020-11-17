@@ -14,7 +14,7 @@ const ApartmentDetails = (props) => {
     const aptId = useParams();
     console.log('Apartment ID from route parameter:', aptId.id)
     useEffect( () => {
-        fetch(`http://localhost:7000/apartmentDetails/${aptId.id}`)
+        fetch(`https://agile-taiga-86357.herokuapp.com/apartmentDetails/${aptId.id}`)
         .then( res => res.json())
         .then( data => {
             const selectedApt = {...data}

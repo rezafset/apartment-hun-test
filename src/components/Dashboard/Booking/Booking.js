@@ -6,7 +6,7 @@ const Booking = () => {
     const [booking, setBooking] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:7000/rent')
+        fetch('https://agile-taiga-86357.herokuapp.com/rent')
             .then(response => response.json())
             .then(data => setBooking(data))
 

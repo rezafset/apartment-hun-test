@@ -9,7 +9,7 @@ const Apartment = () => {
     const [apartment, setApartment] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:7000/house')
+        fetch('https://agile-taiga-86357.herokuapp.com/house')
             .then(response => response.json())
             .then(data => setApartment(data))
 

@@ -9,7 +9,7 @@ const MyRent = () => {
     const [rent, setRent] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:7000/userRent', {
+        fetch('https://agile-taiga-86357.herokuapp.com/userRent', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ email: loggedInUser.email })
@@ -20,7 +20,7 @@ const MyRent = () => {
 
 
     // useEffect(() => {
-    //     fetch('http://localhost:7000/userRent')
+    //     fetch('https://agile-taiga-86357.herokuapp.com/userRent')
     //         .then(response => response.json())
     //         .then(data => setRent(data))
 
