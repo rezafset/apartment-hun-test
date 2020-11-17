@@ -2,6 +2,7 @@ import React from 'react';
 import '../Apartment.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarker, faBed, faBath } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const SingleApt = ({ apartment }) => {
 
@@ -18,7 +19,10 @@ const SingleApt = ({ apartment }) => {
             </div>
             <div className="card-footer d-flex justify-content-between">
                 <h3 className="font-weight-bold" style={{ color: '#275A53' }}>${apartment.price}</h3>
-                <button className="btn" style={{ background: '#275A53', color: '#ffffff' }}>View Details</button>
+                <Link to={`/apartmentDetails/${apartment._id}`}>
+                    <button className="btn" style={{ background: '#275A53', color: '#ffffff' }}>View Details</button>
+                </Link>
+                
             </div>
         </div>
     );

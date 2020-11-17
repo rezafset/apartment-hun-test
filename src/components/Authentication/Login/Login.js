@@ -5,14 +5,19 @@ import "firebase/auth";
 import firebaseConfig from '../firebase.config';
 import classes from './login.module.css';
 import {UserContext} from '../../../App';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const Login = () => {
+    let history = useHistory();
+    let location = useLocation();
+    let { from } = location.state || { from: { pathname: "/" } };
+
+
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     console.log(loggedInUser);
-    const [userInfo, setUserInfo] = useState({
-        loggedInUser: false
-    });
+    const [userInfo, setUserInfo] = useState({});
     const [newUser, setNewUser] = useState(false);
+
 
 
     // Stop firebase from initializing infinite number of times
@@ -35,6 +40,9 @@ const Login = () => {
             console.log(result);
             const currentUserInfo = {...userInfo};
             currentUserInfo.loggedInUser = true;
+            setUserInfo(currentUserInfo);
+            setLoggedInUser(currentUserInfo);
+            history.replace(from);
             console.log('Account created successfully.');
             console.log(userInfo);
         })
@@ -42,6 +50,7 @@ const Login = () => {
             // Handle Errors here.
             var errorCode = error.code;
             var errorMessage = error.message;
+            console.log(errorMessage);
             // ...
         });
     }
@@ -53,8 +62,9 @@ const Login = () => {
             console.log(result);
             console.log("logged in successfully");
             const currentUserInfo = {...userInfo};
-            currentUserInfo.loggedInUser = true;
+            setLoggedInUser(currentUserInfo);
             setUserInfo(currentUserInfo);
+            history.replace(from);
             console.log(userInfo);
         })
         .catch(function(error) {

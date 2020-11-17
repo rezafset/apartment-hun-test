@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import classes from './rentRequestForm.module.css';
+import { UserContext } from '../../../App';
 
 const RentRequestForm = () => {
     const [bookingInfo, setBookingInfo] = useState({});
-
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     // Handle Blur
     const handleBlur = e => {
         const bookingData = {...bookingInfo};
@@ -17,7 +18,7 @@ const RentRequestForm = () => {
             <br/>
             <input placeholder="Phone No." name="phone" onBlur={handleBlur} type="phone"/>
             <br/>
-            <input placeholder="Email ID" name="email" onBlur={handleBlur} type="email"/>
+            <input placeholder="Email ID" name="email" onBlur={handleBlur} type="email"  value={loggedInUser.email}/>
             <br/>
             <input placeholder="Message" name="message" onBlur={handleBlur}  type="text" style={{"height": "200px"}}/>
             <br/>
