@@ -23,9 +23,9 @@ function App() {
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <Router>
         <Switch>
-          <PrivateRoute path="/login">
+          <Route path="/login">
             <Login></Login>
-          </PrivateRoute>
+          </Route>
           <PrivateRoute path="/apartmentDetails/:id">
             <ApartmentDetails></ApartmentDetails>
           </PrivateRoute>
