@@ -15,7 +15,7 @@ const Navigation = () => {
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item ml-2">
-                            <a class="nav-link text-dark" href="#home">Home</a>
+                            <Link to="/" class="nav-link text-dark">Home</Link>
                         </li>
                         <li class="nav-item ml-2">
                             <a class="nav-link text-dark" href="#about">About</a>

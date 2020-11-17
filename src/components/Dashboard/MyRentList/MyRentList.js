@@ -1,8 +1,9 @@
 import React from 'react';
 import './MyRentList.css';
 
-const MyRentList = () => {
+const MyRentList = ({ rent }) => {
     return (
+
         <div className="booking-table mx-auto py-3" >
             <table class="table table-bordered mx-auto p-4">
                 <thead>
@@ -13,22 +14,18 @@ const MyRentList = () => {
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
-                <tbody>
-
-                    <tr>
-                        <td>Demo</td>
-                        <td>Demo</td>
-                        <td>Demo</td>
-                        <td>Demo</td>
-                        {/* <td scope="col" span="1">
-                            <select className="status-change">
-                                <option className="text-danger" >Pending</option>
-                                <option value="done">Done</option>
-                            </select>
-                        </td> */}
-                    </tr>
-
-                </tbody>
+                {
+                    rent.map(rent=>
+                        <tbody>
+                            <tr>
+                                <td>{rent.title}</td>
+                                <td>{rent.location}</td>
+                                <td>{rent.price}</td>
+                                <td>{rent.status}</td>
+                            </tr>
+                        </tbody>
+                    )
+                }
             </table>
         </div>
     );

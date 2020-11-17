@@ -1,8 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import classes from './rentRequestForm.module.css';
 import { UserContext } from '../../../App';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useHistory } from 'react-router-dom';
+
+toast.configure();
 
 const RentRequestForm = (props) => {
+    const history = useHistory();
+
     console.log(`props from rent request form`, props.aptInfo)
     const [bookingInfo, setBookingInfo] = useState({});
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
@@ -14,20 +21,32 @@ const RentRequestForm = (props) => {
         bookingData.status = "pending";
         bookingData.title = props.aptInfo.title;
         bookingData.price = props.aptInfo.price;
+        bookingData.location = props.aptInfo.location;
         bookingData.aptId = props.aptInfo._id;
         bookingData[e.target.name] = e.target.value;
         setBookingInfo(bookingData);
         console.log(bookingInfo);
     }
 
-    const handleBookingRequest = e => {
+    const handleBookingRequest = (e) => {
         fetch('http://localhost:7000/requestBooking', {
             method: 'POST',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify(bookingInfo)
         })
         .then( res => res.json())
-        .then( data => console.log(data))
+        .then( data => {
+            console.log(data);
+            if(data){
+                // alert('Rent added Successfully');
+                toast.success('Rent Added Successfully');
+                history.push('/dashboard/myRent');
+            }
+        })
+        .catch(error => {
+            console.error(error)
+        })
+        e.preventDefault();
     }
 
     return (

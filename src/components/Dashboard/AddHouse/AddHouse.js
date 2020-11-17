@@ -44,7 +44,7 @@ const AddHouse = () => {
             if(data){
                 // alert('Service added Successfully');
                 toast.success('New House Added Successfully');
-                history.push('/house');
+                history.push('/');
             }
         })
         .catch(error => {

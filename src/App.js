@@ -13,6 +13,7 @@ import MyRent from "./components/Dashboard/MyRent/MyRent";
 import Login from "./components/Authentication/Login/Login";
 import ApartmentDetails from "./components/ApartmentDetails/ApartmentDetails";
 import PrivateRoute from "./components/Authentication/PrivateRoute/PrivateRoute";
+import AddAdmin from "./components/Dashboard/AddAdmin/AddAdmin";
 
 
 export const UserContext = createContext();
@@ -22,20 +23,23 @@ function App() {
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <Router>
         <Switch>
-          <Route path="/login">
+          <PrivateRoute path="/login">
             <Login></Login>
-          </Route>
+          </PrivateRoute>
           <PrivateRoute path="/apartmentDetails/:id">
             <ApartmentDetails></ApartmentDetails>
           </PrivateRoute>
-          <Route path="/dashboard/booking">
+          <PrivateRoute path="/dashboard/booking">
             <Dashboard></Dashboard>
-          </Route>
+          </PrivateRoute>
           <Route path="/dashboard/addHouse">
             <AddHouse></AddHouse>
           </Route>
           <Route path="/dashboard/myRent">
             <MyRent></MyRent>
+          </Route>
+          <Route path="/dashboard/makeAmin">
+            <AddAdmin></AddAdmin>
           </Route>
           <Route path="/">
             <Home></Home>
